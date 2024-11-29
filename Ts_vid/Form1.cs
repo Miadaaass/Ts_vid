@@ -86,6 +86,15 @@ namespace WebcamTargetFinder
 
         private void btnStartAnalysis_Click(object sender, EventArgs e)
         {
+            if (!frame.Empty())
+            {
+                System.Drawing.Point center = ProcessFrame(frame);
+                labelCoordinates.Text = $"Center: {center.X}, {center.Y}";
+            }
+            else
+            {
+                labelCoordinates.Text = ",!";
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
